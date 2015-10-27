@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="TimesTablesApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +16,57 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.050000000000000003" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="faZ-Hp-TJ7">
+                                <rect key="frame" x="33" y="66" width="534" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="ija-Xj-nTo"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="sliderMoved:" destination="BYZ-38-t0r" eventType="valueChanged" id="hpV-eG-KUZ"/>
+                                </connections>
+                            </slider>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4sc-93-8Uj">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="cF2-XU-XZl"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="times tables" id="D11-Nq-O0g"/>
+                                </items>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5Jt-32-2mU">
+                                <rect key="frame" x="0.0" y="104" width="600" height="496"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="HVF-ic-6HW"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="ECm-tf-DE2"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="4sc-93-8Uj" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="666-pc-SiV"/>
+                            <constraint firstItem="5Jt-32-2mU" firstAttribute="top" secondItem="faZ-Hp-TJ7" secondAttribute="bottom" constant="8" id="C9o-Eb-fWR"/>
+                            <constraint firstItem="4sc-93-8Uj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="ElS-97-bZC"/>
+                            <constraint firstItem="faZ-Hp-TJ7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="15" id="FTE-2t-CR6"/>
+                            <constraint firstItem="5Jt-32-2mU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="G4C-U4-hyT"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="5Jt-32-2mU" secondAttribute="bottom" id="Idp-D8-0Kg"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="faZ-Hp-TJ7" secondAttribute="trailing" constant="15" id="JVv-zK-IZS"/>
+                            <constraint firstItem="faZ-Hp-TJ7" firstAttribute="top" secondItem="4sc-93-8Uj" secondAttribute="bottom" constant="22" id="MzD-su-Rtj"/>
+                            <constraint firstItem="5Jt-32-2mU" firstAttribute="top" secondItem="faZ-Hp-TJ7" secondAttribute="bottom" constant="8" id="iZq-g4-8M3"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="5Jt-32-2mU" secondAttribute="trailing" constant="-20" id="iz1-ei-nRo"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="4sc-93-8Uj" secondAttribute="trailing" constant="-20" id="zwJ-Hz-zRr"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="sliderValue" destination="faZ-Hp-TJ7" id="KKf-JO-nsj"/>
+                        <outlet property="table" destination="5Jt-32-2mU" id="0f1-a2-SsM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="384" y="384"/>
         </scene>
     </scenes>
 </document>
